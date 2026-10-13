@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071d35">
+<title>Khám phá lịch sử Việt Nam | Ngô Quyền đóng cọc Bạch Đằng</title>
+<style>
+:root{--navy:#071d35;--navy2:#0b2b4a;--blue:#155b86;--sky:#dceef7;--gold:#d8b56d;--gold2:#f1d99c;--ink:#10283d;--muted:#617589;--white:#fff;--green:#197653;--red:#a33b3b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:#edf3f7;color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+button{font:inherit;cursor:pointer}
+.hero{position:relative;overflow:hidden;color:white;background:radial-gradient(ellipse at 78% 18%,#1a5275 0,transparent 34%),linear-gradient(135deg,#06172b 0%,#0b2d4b 56%,#124d70 100%);padding:30px 22px 46px}
+.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border:1px solid #d8b56d38;border-radius:50%}
+.hero:before{width:420px;height:420px;right:-120px;top:-230px}
+.hero:after{width:560px;height:560px;right:-180px;top:-285px}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:auto}
+.topline{display:flex;align-items:center;gap:10px;color:var(--gold2);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800}
+.seal{width:35px;height:35px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-family:Georgia,serif;font-size:1.05rem}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,3.65rem);line-height:1.06;letter-spacing:.025em;max-width:740px;margin:25px 0 14px}
+.subtitle{color:var(--gold2);font-size:clamp(.95rem,2.5vw,1.18rem);font-weight:800;letter-spacing:.12em}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-top:26px}
+.introline{max-width:570px;color:#d6e5ef;line-height:1.7;margin:0}
+.hero-badge{flex-shrink:0;border:1px solid #d8b56d7a;border-radius:100px;padding:10px 16px;color:var(--gold2);font-size:.78rem;letter-spacing:.1em}
+main{max-width:1100px;margin:-20px auto 0;padding:0 20px 50px;position:relative;z-index:2}
+.panel{background:white;border:1px solid #dce6ed;border-radius:22px;box-shadow:0 18px 50px #0c2b4410;overflow:hidden}
+.start-screen{display:grid;grid-template-columns:1.02fr .98fr;min-height:360px}
+.start-copy{padding:clamp(25px,5vw,52px)}
+.eyebrow{color:#8b6b2e;font-weight:800;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.65rem,3vw,2.4rem);line-height:1.15;margin:12px 0 16px;color:var(--navy)}
+.start-copy p{line-height:1.8;color:#52677a;margin:0 0 25px}
+.primary,.secondary{border:0;border-radius:12px;padding:14px 21px;font-weight:800;transition:transform .18s,box-shadow .18s,background .18s}
+.primary{background:var(--navy);color:white;box-shadow:0 7px 0 #041323}
+.primary:hover{background:#12466d;transform:translateY(-2px);box-shadow:0 9px 0 #041323}
+.primary:active{transform:translateY(3px);box-shadow:0 3px 0 #041323}
+.secondary{background:#e8f0f5;color:var(--navy)}
+.secondary:hover{background:#d9e8f1}
+.art{position:relative;min-height:300px;overflow:hidden;background:linear-gradient(180deg,#163f5d 0%,#276e91 56%,#b3d6df 100%)}
+.art svg{width:100%;height:100%;position:absolute;inset:0}
+.art-label{position:absolute;bottom:17px;left:18px;right:18px;text-align:center;color:#fff;font-family:Georgia,serif;font-size:.8rem;letter-spacing:.13em;text-shadow:0 2px 8px #071d35}
+.quiz{padding:clamp(22px,4vw,42px)}
+.quiz-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:15px}
+.counter{font-size:.83rem;font-weight:850;letter-spacing:.1em;color:#8b6b2e;text-transform:uppercase}
+.score-chip{border-radius:100px;background:#f5f0e5;color:#775a25;padding:8px 12px;font-size:.84rem;font-weight:800;white-space:nowrap}
+.progress-track{height:7px;background:#e7edf1;border-radius:20px;overflow:hidden;margin-bottom:30px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#2e789c,var(--gold));border-radius:20px;transition:width .35s ease}
+.question{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.35;color:var(--navy);margin:0 0 23px}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.answer{display:flex;align-items:flex-start;text-align:left;gap:13px;width:100%;padding:16px;border:1px solid #d8e2e9;border-radius:14px;background:#fff;color:#243e53;line-height:1.5;min-height:76px;transition:border .18s,background .18s,transform .18s}
+.answer:hover:not(:disabled){border-color:#7da8c2;background:#f6fbfe;transform:translateY(-1px)}
+.letter{display:grid;place-items:center;flex:0 0 31px;height:31px;border-radius:9px;background:#edf3f7;color:#173b56;font-weight:900}
+.answer.correct{border-color:#31916e;background:#eaf7f0;color:#145d43}
+.answer.correct .letter{background:#197653;color:white}
+.answer.incorrect{border-color:#c66a6a;background:#fff0f0;color:#8b2f2f}
+.answer.incorrect .letter{background:#a33b3b;color:white}
+.answer:disabled{cursor:default}
+.feedback{display:none;margin-top:18px;padding:15px 17px;border-radius:13px;line-height:1.6}
+.feedback.show{display:block;animation:fadeUp .25s ease}
+.feedback.good{background:#eaf7f0;color:#145d43;border:1px solid #c7e9d7}
+.feedback.bad{background:#fff1ed;color:#853b2d;border:1px solid #f1d0c8}
+.feedback strong{display:block;margin-bottom:3px}
+.quiz-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:24px}
+.quiz-actions .primary{min-width:170px}
+button:focus-visible{outline:3px solid #e0b857;outline-offset:3px}
+.result{text-align:center;padding:clamp(28px,6vw,60px)}
+.result-emblem{width:82px;height:82px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;background:#f6f0e2;color:#9b762f;border:1px solid #e3d1a6;font-size:2.1rem}
+.result h2{margin-bottom:9px}
+.result p{color:#5b6e7d;line-height:1.7}
+.score-number{font-family:Georgia,serif;font-size:clamp(3.5rem,9vw,5.5rem);font-weight:800;color:var(--navy);line-height:1.1;margin:20px 0 5px}
+.score-number small{font-size:1.3rem;color:#8797a5}
+.score-caption{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8b6b2e;font-size:.75rem}
+.result-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px}
+footer{text-align:center;color:#7b8c99;font-size:.8rem;padding:0 20px 26px}
+.hidden{display:none!important}
+@keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:720px){.hero{padding:23px 18px 38px}.hero-bottom{align-items:flex-start;flex-direction:column}.hero-badge{display:none}main{padding:0 12px 35px}.start-screen{grid-template-columns:1fr}.art{min-height:220px;grid-row:1}.start-copy{padding:26px}.answers{grid-template-columns:1fr}.answer{min-height:unset;padding:13px}.quiz{padding:23px 18px}.quiz-actions{align-items:stretch}.quiz-actions button{flex:1}.quiz-actions .primary{min-width:0}.question{font-size:1.4rem}.topline{font-size:.68rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="topline"><span class="seal">越</span><span>Hành trình tìm về cội nguồn</span></div>
+    <h1>KHÁM PHÁ<br>LỊCH SỬ VIỆT NAM</h1>
+    <div class="subtitle">TẬP 1: NGÔ QUYỀN ĐÓNG CỌC BẠCH ĐẰNG</div>
+    <div class="hero-bottom">
+      <p class="introline">Lần theo dấu tích trận Bạch Đằng năm 938 — nơi trí tuệ, lòng quả cảm và sức mạnh đoàn kết góp phần làm nên chiến thắng lịch sử.</p>
+      <div class="hero-badge">DI SẢN · LỊCH SỬ · TỰ HÀO</div>
+    </div>
+  </div>
+</header>
+<main>
+  <section id="startScreen" class="panel start-screen">
+    <div class="start-copy">
+      <div class="eyebrow">Thử thách kiến thức</div>
+      <h2>Giải mã trận địa Bạch Đằng</h2>
+      <p>Cùng khám phá câu chuyện Ngô Quyền đóng cọc Bạch Đằng và thử sức với những câu hỏi lịch sử thú vị!</p>
+      <button class="primary" id="startBtn">BẮT ĐẦU KHÁM PHÁ <span aria-hidden="true">→</span></button>
+    </div>
+    <div class="art" aria-label="Tranh minh họa trận thủy chiến trên sông Bạch Đằng với thuyền chiến và cọc gỗ" role="img">
+      <svg viewBox="0 0 600 410" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4b8ba5"/><stop offset="1" stop-color="#153d5c"/></linearGradient><linearGradient id="sun" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5dda0"/><stop offset="1" stop-color="#bd8547"/></linearGradient></defs>
+        <circle cx="430" cy="105" r="51" fill="url(#sun)" opacity=".9"/>
+        <path d="M0 185L95 111 148 156 236 82 318 166 400 120 510 174 600 125V270H0Z" fill="#244e64" opacity=".85"/>
+        <path d="M0 225L95 178 180 217 285 163 375 215 485 170 600 211V410H0Z" fill="#173a52"/>
+        <path d="M0 245Q145 222 280 249T600 238V410H0Z" fill="url(#water)"/>
+        <g stroke="#a9d2d9" stroke-width="2" opacity=".45" fill="none"><path d="M0 282Q120 265 230 284T600 276"/><path d="M20 322Q150 307 290 327T600 317"/><path d="M0 363Q140 347 300 368T600 358"/></g>
+        <!-- wooden stakes -->
+        <g fill="#4b3529" stroke="#d0a66c" stroke-width="2">
+          <path d="M72 340L92 225L105 343Z"/><path d="M125 358L149 213L160 361Z"/><path d="M186 345L205 242L218 350Z"/><path d="M252 366L275 223L287 367Z"/><path d="M325 354L345 244L357 356Z"/><path d="M390 371L412 216L426 373Z"/><path d="M467 349L489 241L502 351Z"/><path d="M528 365L551 220L564 367Z"/>
+        </g>
+        <!-- boats -->
+        <g stroke="#d7b77b" stroke-width="2" stroke-linejoin="round">
+          <path d="M85 235L240 235L213 266Q163 282 111 264Z" fill="#4c3428"/><path d="M160 233V157L209 231Z" fill="#e5d5b1"/><path d="M164 164L164 229L202 228Z" fill="#b98a4f"/><path d="M157 229L157 136" fill="none" stroke="#c5a16a" stroke-width="5"/>
+          <path d="M335 211L490 211L462 242Q413 256 361 240Z" fill="#493327"/><path d="M402 209V131L454 208Z" fill="#eadab7"/><path d="M407 140L407 206L447 206Z" fill="#b98a4f"/><path d="M399 206V112" fill="none" stroke="#c5a16a" stroke-width="5"/>
+        </g>
+        <!-- stylized commander silhouette -->
+        <g transform="translate(287 175)" fill="#081c2c"><circle cx="0" cy="0" r="11"/><path d="M-12 12L12 12L20 51L-19 51Z"/><path d="M-13 20L-37 45L-32 51L-4 34M11 20L35 42L30 49L5 35"/><path d="M-10 49L-13 82L-2 82L5 51L12 82L23 82L13 48Z"/></g>
+        <path d="M0 390Q120 376 240 391T600 387" fill="none" stroke="#d8b56d" stroke-width="2" opacity=".8"/>
+        <g fill="#f5e6c1" opacity=".8"><circle cx="44" cy="75" r="2"/><circle cx="120" cy="54" r="2"/><circle cx="320" cy="54" r="1.5"/><circle cx="525" cy="62" r="2"/></g>
+      </svg>
+      <div class="art-label">BẠCH ĐẰNG · NĂM 938</div>
+    </div>
+  </section>
+
+  <section id="quizScreen" class="panel quiz hidden" aria-live="polite">
+    <div class="quiz-top"><div class="counter" id="counter">CÂU 1 / 6</div><div class="score-chip" id="scoreChip">Điểm đúng: 0</div></div>
+    <div class="progress-track" role="progressbar" aria-label="Tiến trình câu hỏi" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="progressTrack"><div class="progress-fill" id="progressFill"></div></div>
+    <h2 class="question" id="questionText"></h2>
+    <div class="answers" id="answers"></div>
+    <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+    <div class="quiz-actions">
+      <button class="secondary" id="backBtn">← Quay lại</button>
+      <button class="primary" id="nextBtn" disabled>Câu tiếp theo →</button>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="panel result hidden" aria-live="polite">
+    <div class="result-emblem" aria-hidden="true">✦</div>
+    <div class="eyebrow">Hoàn thành hành trình</div>
+    <h2>Kết quả khám phá</h2>
+    <p id="resultMessage"></p>
+    <div class="score-number"><span id="correctCount">0</span><small> / 6</small></div>
+    <div class="score-caption">Số câu trả lời đúng</div>
+    <p><strong id="scoreTen">0,0/10 điểm</strong></p>
+    <div class="result-actions">
+      <button class="primary" id="retryBtn">↻ LÀM LẠI TỪ ĐẦU</button>
+      <button class="secondary" id="homeBtn">⌂ VỀ TRANG CHỦ</button>
+    </div>
+  </section>
+</main>
+<footer>KHÁM PHÁ LỊCH SỬ VIỆT NAM · TẬP 1</footer>
+<script>
+const questions = [
+  {q:"Trong truyện Ngô Quyền đóng cọc Bạch Đằng, Ngô Quyền cùng vị tướng nào đi khảo sát sông Bạch Đằng?",a:["Đỗ Cảnh Thạc","Phạm Bạch Hổ","Đặng An","Lưu Hoằng Tháo"],correct:1},
+  {q:"Trong truyện Ngô Quyền đóng cọc Bạch Đằng, Phạm Bạch Hổ đã dùng phương tiện gì để khảo sát các bãi sú vẹt?",a:["Thuyền nhỏ","Voi chiến","Ngựa chiến","Xe kéo"],correct:0},
+  {q:"Trong truyện Ngô Quyền đóng cọc Bạch Đằng, các tướng đã nghĩ ra cách nào để dựng những cây cọc lớn xuống lòng sông?",a:["Dùng dây buộc và thang tre để đưa cọc xuống, sau đó dựng cọc đứng lên.","Dùng voi kéo cọc trên bờ.","Thả toàn bộ cọc trôi theo dòng nước.","Chôn cọc trên bãi cát khô."],correct:0},
+  {q:"Trong truyện Ngô Quyền đóng cọc Bạch Đằng, theo lời Ngô Quyền, ai là những người góp công lớn trong việc xây dựng trận địa cọc?",a:["Chỉ có các tướng lĩnh.","Chỉ có binh lính.","Các lão chài, tướng sĩ, binh lính và người dân tham gia.","Chỉ có thương nhân."],correct:2},
+  {q:"Trong truyện Ngô Quyền đóng cọc Bạch Đằng, kết thúc truyện, quân của Lưu Hoằng Tháo phải chịu kết cục như thế nào?",a:["Chiến thắng và chiếm được vùng đất.","Bị đánh bại trên sông Bạch Đằng.","Rút quân về để cầu hòa.","Tiếp tục đóng quân tại Bạch Đằng."],correct:1},
+  {q:"Trong truyện Ngô Quyền đóng cọc Bạch Đằng, bài học nổi bật được thể hiện qua sự phối hợp giữa Ngô Quyền và người dân địa phương là gì?",a:["Chỉ cần dựa vào sức mạnh quân đội.","Trí tuệ, sự đoàn kết và sức mạnh của toàn dân góp phần làm nên chiến thắng.","Không cần tìm hiểu địa hình trước khi chiến đấu.","Chỉ người chỉ huy mới có vai trò quan trọng."],correct:1}
+];
+let current = 0;
+let answersChosen = Array(questions.length).fill(null);
+let scored = Array(questions.length).fill(false);
+let score = 0;
+const $ = id => document.getElementById(id);
+const startScreen=$("startScreen"), quizScreen=$("quizScreen"), resultScreen=$("resultScreen");
+function showScreen(which){
+  startScreen.classList.toggle("hidden",which!=="start");
+  quizScreen.classList.toggle("hidden",which!=="quiz");
+  resultScreen.classList.toggle("hidden",which!=="result");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function startGame(){current=0;answersChosen=Array(questions.length).fill(null);scored=Array(questions.length).fill(false);score=0;showScreen("quiz");renderQuestion();}
+function renderQuestion(){
+  const item=questions[current];
+  $("counter").textContent=`CÂU ${current+1} / ${questions.length}`;
+  $("scoreChip").textContent=`Điểm đúng: ${score}`;
+  $("progressFill").style.width=`${(current/questions.length)*100}%`;
+  $("progressTrack").setAttribute("aria-valuenow",String(current));
+  $("questionText").textContent=item.q;
+  const list=$("answers");list.innerHTML="";
+  item.a.forEach((answer,index)=>{
+    const button=document.createElement("button");
+    button.type="button";button.className="answer";
+    button.innerHTML=`<span class="letter">${"ABCD"[index]}</span><span></span>`;
+    button.lastElementChild.textContent=answer;
+    button.addEventListener("click",()=>chooseAnswer(index));
+    list.appendChild(button);
+  });
+  $("feedback").className="feedback";$("feedback").textContent="";
+  $("nextBtn").disabled=answersChosen[current]===null;
+  $("nextBtn").textContent=current===questions.length-1?"Xem kết quả →":"Câu tiếp theo →";
+  $("backBtn").disabled=current===0;
+  if(answersChosen[current]!==null) showRecordedAnswer();
+}
+function chooseAnswer(index){
+  if(answersChosen[current]!==null)return;
+  answersChosen[current]=index;
+  const correct=index===questions[current].correct;
+  if(correct&&!scored[current]){score++;scored[current]=true;}
+  else if(!correct)scored[current]=true;
+  showRecordedAnswer();
+}
+function showRecordedAnswer(){
+  const chosen=answersChosen[current], correct=questions[current].correct;
+  const buttons=[...$("answers").querySelectorAll("button")];
+  buttons.forEach((button,i)=>{
+    button.disabled=true;
+    if(i===correct)button.classList.add("correct");
+    else if(i===chosen)button.classList.add("incorrect");
+    button.setAttribute("aria-pressed",String(i===chosen));
+  });
+  const feedback=$("feedback");
+  if(chosen===correct){
+    feedback.className="feedback show good";
+    feedback.innerHTML="<strong>Chính xác! Bạn đã trả lời đúng.</strong>Đáp án đúng: "+ "ABCD"[correct]+". "+questions[current].a[correct];
+  }else{
+    feedback.className="feedback show bad";
+    feedback.innerHTML="<strong>Chưa chính xác! Hãy thử lại ở câu tiếp theo.</strong>Đáp án đúng: "+ "ABCD"[correct]+". ";
+    const detail=document.createElement("span");detail.textContent=questions[current].a[correct];feedback.appendChild(detail);
+  }
+  $("scoreChip").textContent=`Điểm đúng: ${score}`;
+  $("nextBtn").disabled=false;
+}
+function nextQuestion(){
+  if(answersChosen[current]===null)return;
+  if(current<questions.length-1){current++;renderQuestion();}
+  else showResults();
+}
+function previousQuestion(){if(current>0){current--;renderQuestion();}}
+function showResults(){
+  $("progressFill").style.width="100%";$("progressTrack").setAttribute("aria-valuenow","6");
+  $("correctCount").textContent=score;
+  $("scoreTen").textContent=(score/6*10).toLocaleString("vi-VN",{minimumFractionDigits:1,maximumFractionDigits:1})+"/10 điểm";
+  let message;
+  if(score===6)message="Xuất sắc! Bạn đã nắm vững nội dung câu chuyện.";
+  else if(score>=4)message="Rất tốt! Bạn đã hiểu khá rõ câu chuyện.";
+  else if(score>=2)message="Hãy đọc lại câu chuyện để hiểu sâu hơn nhé!";
+  else message="Đừng nản lòng! Hãy thử lại và khám phá câu chuyện một lần nữa.";
+  $("resultMessage").textContent=message;
+  showScreen("result");
+}
+$("startBtn").addEventListener("click",startGame);
+$("nextBtn").addEventListener("click",nextQuestion);
+$("backBtn").addEventListener("click",previousQuestion);
+$("retryBtn").addEventListener("click",startGame);
+$("homeBtn").addEventListener("click",()=>showScreen("start"));
+</script>
+</body>
+</html>
